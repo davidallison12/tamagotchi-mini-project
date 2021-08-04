@@ -14,7 +14,7 @@ let playButton = document.querySelector('#play-button')
 let lightsButton = document.querySelector('#lights-button')
 let feedButton = document.querySelector('#feed-button')
 
-playButton.addEventListener('click',()=>{ console.log(playButton)})
+// playButton.addEventListener('click',()=>{ console.log(playButton)})
 
 
 console.log(playButton)
@@ -30,10 +30,37 @@ const tamagotchi = {
     age: 1,
 }
 
+//Create All of the decrementers for the buttons
+//Do them all separately 
+//Then we can work on trying to combine them together. 
+
 const decrementHunger = feedButton.addEventListener('click', (event) => {
     tamagotchi.hunger--
     document.querySelector('#hunger-points').innerText = tamagotchi.hunger
 })
+
+const decrementBoredom = playButton.addEventListener('click', (event) => {
+    tamagotchi.boredom--
+    document.querySelector('#boredom-points').innerText = tamagotchi.boredom
+})
+
+//Lets do sleep last since we will need to toggle this one with night. 
+
+//First time it is clicked, it will make it night time.
+//Second time it is clicked it goes back to day and sleep increments down 
+let sleepIncrementer = 0 
+const decrementSleep = lightsButton.addEventListener('click',(event) => {
+    
+    if ((sleepIncrementer%2) === 0 || sleepIncrementer === 0) {
+        document.querySelector('.screen').classList.toggle('night-time')
+    }else {
+        // document.querySelector('#screen').classList.toggle('night-time')
+        tamagotchi.sleepiness--
+        document.querySelector('#sleep-points').innerText = tamagotchi.sleepiness
+    }
+    console.log(sleepIncrementer)
+    sleepIncrementer++
+} )
 
 
 
