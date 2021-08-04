@@ -1,0 +1,91 @@
+* {
+    border: gold solid 1px
+}
+
+@font-face {
+    font-family: onePieceFont;
+    src:url(onepiecefont.ttf)
+}
+
+body {
+    background-color: #3f61b4;
+    height: 300 px;
+    font-family: onePieceFont;
+}
+
+header {
+    text-align: center;
+    font-family: onePieceFont;
+    font-size: 60px;
+    margin-bottom: 10px;
+}
+h1 {
+    margin: 0;
+}
+
+
+main {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 50%;
+    margin: 0 auto;
+    background-color: #a2173b;
+    border-radius: 25px;
+}
+
+.screen {
+    height:50vh;
+    width: 70%;
+    background-color: #f8f7ff;
+    margin-top: 8vh
+}
+.sprite {
+    height:150px ;
+}
+
+.points-container {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    text-align: center;
+    background-color: #f2d857
+}
+
+.points-window {
+margin: 0
+}
+.points-titles {
+    margin: 0
+}
+
+.points-actual {
+    margin: 0
+}
+
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    width: 70%;
+    padding:5vh 0 
+}
+.buttons {
+    background-color: #f2d857;
+    height:40px;
+    width: 13vh;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* .sprite {
+    background-image: url(../image/kid-luffy.png);
+    height: 30px
+} */
+
+
+.game-console {
+    background-color: lightcoral;
+    /* height: 50 vh; */
+    /* width: 60 vw; */
+}
