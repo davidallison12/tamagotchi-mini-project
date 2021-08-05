@@ -33,6 +33,18 @@ const tamagotchi = {
     boredom: 1,
     age: 0,
 }
+//Creating class for Tamagotchi and will instantiate in game
+class Tamagotchi {
+    constructor(name) {
+        this,name = name
+        this.sleepiness = 1
+        this.boredom = 1
+        this.age = 0
+    }
+    //Need a movement function
+    //Need a evolve function 
+        //This should include a death look.
+}
 
 //Create All of the decrementers for the buttons
 //Do them all separately 
@@ -68,52 +80,100 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 
 const game = {
     timer: 0,
-
+    sleepIncrementer:0,
+    setTime() {
+        const gameTimer = setInterval(() => {
+            // Create timer that increase time every second 
+            
+            // Sleep - Will increase every 4 seconds 
+            // Boredom  - Will increase every 3 seconds 
+    
+            this.timer++
+            // Hunger - It will increase every second 
+            if ((this.timer % 1) === 0) {
+                tamagotchi.hunger++
+                hungerDisplay.innerText = tamagotchi.hunger
+            } 
+            // Boredom  - Will increase every 3 seconds
+            if ((this.timer % 3) === 0) {
+                tamagotchi.boredom++
+                boredomDisplay.innerText = tamagotchi.boredom
+            }
+            // Sleep - Will increase every 4 seconds 
+            if((this.timer % 4) === 0) {
+                tamagotchi.sleepiness++
+                sleepDisplay.innerText = tamagotchi.sleepiness
+            }
+            // Age - Will increase every 10 seconds 
+            if ((this.timer % 10) === 0) {
+                tamagotchi.age++
+                ageDisplay.innerText = tamagotchi.age
+                
+            }
+            //Clearing interval if player loses
+            if(tamagotchi.hunger >= 10 || tamagotchi.boredom >= 10 || tamagotchi.sleepiness >= 10) {
+                clearInterval(gameTimer)
+                // document.querySelectorAll('.buttons').disabled = true [ CAN NOT GET TO WORK RIGHT NOW]
+                // playButton.setAttribute('disabled','true')
+                // lightsButton.disabled = true
+                // feedButton.disabled = true
+                document.querySelector('.buttons-container').disabled = true
+    
+                
+               
+            }
+    
+        }, 1000)
+    },
 }
 
 
-const setTime = () => {
-    const gameTimer = setInterval(() => {
-        // Create timer that increase time every second 
-        
-        // Sleep - Will increase every 4 seconds 
-        // Boredom  - Will increase every 3 seconds 
 
-        game.timer++
-        // Hunger - It will increase every second 
-        if ((game.timer % 1) === 0) {
-            tamagotchi.hunger++
-            hungerDisplay.innerText = tamagotchi.hunger
-        } 
-        // Boredom  - Will increase every 3 seconds
-        if ((game.timer % 3) === 0) {
-            tamagotchi.boredom++
-            boredomDisplay.innerText = tamagotchi.boredom
-        }
-        // Sleep - Will increase every 4 seconds 
-        if((game.timer % 4) === 0) {
-            tamagotchi.sleepiness++
-            sleepDisplay.innerText = tamagotchi.sleepiness
-        }
-        // Age - Will increase every 10 seconds 
-        if ((game.timer % 10) === 0) {
-            tamagotchi.age++
-            ageDisplay.innerText = tamagotchi.age
+
+// const setTime = () => {
+//     const gameTimer = setInterval(() => {
+//         // Create timer that increase time every second 
+        
+//         // Sleep - Will increase every 4 seconds 
+//         // Boredom  - Will increase every 3 seconds 
+
+//         game.timer++
+//         // Hunger - It will increase every second 
+//         if ((game.timer % 1) === 0) {
+//             tamagotchi.hunger++
+//             hungerDisplay.innerText = tamagotchi.hunger
+//         } 
+//         // Boredom  - Will increase every 3 seconds
+//         if ((game.timer % 3) === 0) {
+//             tamagotchi.boredom++
+//             boredomDisplay.innerText = tamagotchi.boredom
+//         }
+//         // Sleep - Will increase every 4 seconds 
+//         if((game.timer % 4) === 0) {
+//             tamagotchi.sleepiness++
+//             sleepDisplay.innerText = tamagotchi.sleepiness
+//         }
+//         // Age - Will increase every 10 seconds 
+//         if ((game.timer % 10) === 0) {
+//             tamagotchi.age++
+//             ageDisplay.innerText = tamagotchi.age
             
-        }
-        //Clearing interval if player loses
-        if(tamagotchi.hunger >= 10 || tamagotchi.boredom >= 10 || tamagotchi.sleepiness >= 10) {
-            clearInterval(gameTimer)
-            // document.querySelectorAll('.buttons').disabled = true [ CAN NOT GET TO WORK RIGHT NOW]
-            playButton.setAttribute('disabled','true')
-            // lightsButton.disabled = true
-            // feedButton.disabled = true
+//         }
+//         //Clearing interval if player loses
+//         if(tamagotchi.hunger >= 10 || tamagotchi.boredom >= 10 || tamagotchi.sleepiness >= 10) {
+//             clearInterval(gameTimer)
+//             // document.querySelectorAll('.buttons').disabled = true [ CAN NOT GET TO WORK RIGHT NOW]
+//             // playButton.setAttribute('disabled','true')
+//             // lightsButton.disabled = true
+//             // feedButton.disabled = true
+//             document.querySelector('.buttons-container').disabled = true
+
             
            
-        }
+//         }
 
-    }, 1000)
-}
+//     }, 1000)
+// }
 
-setTime()
+game.setTime()
 // const buttonBegin
