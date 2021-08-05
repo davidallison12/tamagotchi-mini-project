@@ -17,7 +17,8 @@ const boredomDisplay = document.querySelector('#boredom-points')
 const hungerDisplay = document.querySelector('#hunger-points')
 const sleepDisplay = document.querySelector('#sleep-points')
 const ageDisplay = document.querySelector('#age-level')
-
+const nameInput = document.querySelector('#name-input')
+const nameButton = document.querySelector('#name-button')
 // playButton.addEventListener('click',()=>{ console.log(playButton)})
 
 
@@ -42,6 +43,9 @@ class Tamagotchi {
         this.age = 0
     }
     //Need a movement function
+    // moveAround() {
+        
+    // }
     //Need a evolve function 
         //This should include a death look.
 }
@@ -79,6 +83,7 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 } )
 
 const game = {
+    tamaLuffy: null,
     timer: 0,
     sleepIncrementer:0,
     setTime() {
@@ -125,55 +130,33 @@ const game = {
     
         }, 1000)
     },
+    startGame() {
+        let newTamaLuffy = new Tamagotchi(nameInput.value)
+        document.querySelector('#tamagotchi-name').innerText = nameInput.value
+        this.setTime
+    }
+    
+}
+
+//start game 
+    // What needs to happen 
+    //Once name has been place in the prompt 
+    //  start the timer
+    // instantiate tamagotchi(AKA Luffy) with value in the input
+    //run game
+
+    nameButton.addEventListener('click', (event) => {
+        console.log(nameInput.value)
+        console.log(event.target)
+        document.querySelector('#tamagotchi-name').innerText = nameInput.value
+    })
+
+const startGame = () => {
+   
 }
 
 
 
-
-// const setTime = () => {
-//     const gameTimer = setInterval(() => {
-//         // Create timer that increase time every second 
-        
-//         // Sleep - Will increase every 4 seconds 
-//         // Boredom  - Will increase every 3 seconds 
-
-//         game.timer++
-//         // Hunger - It will increase every second 
-//         if ((game.timer % 1) === 0) {
-//             tamagotchi.hunger++
-//             hungerDisplay.innerText = tamagotchi.hunger
-//         } 
-//         // Boredom  - Will increase every 3 seconds
-//         if ((game.timer % 3) === 0) {
-//             tamagotchi.boredom++
-//             boredomDisplay.innerText = tamagotchi.boredom
-//         }
-//         // Sleep - Will increase every 4 seconds 
-//         if((game.timer % 4) === 0) {
-//             tamagotchi.sleepiness++
-//             sleepDisplay.innerText = tamagotchi.sleepiness
-//         }
-//         // Age - Will increase every 10 seconds 
-//         if ((game.timer % 10) === 0) {
-//             tamagotchi.age++
-//             ageDisplay.innerText = tamagotchi.age
-            
-//         }
-//         //Clearing interval if player loses
-//         if(tamagotchi.hunger >= 10 || tamagotchi.boredom >= 10 || tamagotchi.sleepiness >= 10) {
-//             clearInterval(gameTimer)
-//             // document.querySelectorAll('.buttons').disabled = true [ CAN NOT GET TO WORK RIGHT NOW]
-//             // playButton.setAttribute('disabled','true')
-//             // lightsButton.disabled = true
-//             // feedButton.disabled = true
-//             document.querySelector('.buttons-container').disabled = true
-
-            
-           
-//         }
-
-//     }, 1000)
-// }
 
 game.setTime()
 // const buttonBegin
