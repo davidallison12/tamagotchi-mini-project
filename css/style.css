@@ -39,7 +39,8 @@ main {
     height:50vh;
     width: 70%;
     background-color: #f8f7ff;
-    margin-top: 8vh
+    margin-top: 8vh;
+    display: flex;
 }
 .sprite {
     height:150px ;

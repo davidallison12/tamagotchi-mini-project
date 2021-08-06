@@ -19,6 +19,7 @@ const sleepDisplay = document.querySelector('#sleep-points')
 const ageDisplay = document.querySelector('#age-level')
 const nameInput = document.querySelector('#name-input')
 const nameButton = document.querySelector('#name-button')
+const screen = document.querySelector('.screen')
 // playButton.addEventListener('click',()=>{ console.log(playButton)})
 
 
@@ -37,15 +38,45 @@ const tamagotchi = {
 //Creating class for Tamagotchi and will instantiate in game
 class Tamagotchi {
     constructor(name) {
-        this,name = name
+        this.name = name
+        this.hunger = 1
         this.sleepiness = 1
         this.boredom = 1
         this.age = 0
+        this.movementInterval = 0
     }
     //Need a movement function
-    // moveAround() {
+    moveAround() {
+        //Manipulate Flex inside of the screen div
+        //How?
         
-    // }
+        //Have a set attribute for both justify content and align items 
+        //Have them selected at random through a loop 
+        //I could make an array with flex start, flex end, and center 
+        const positions = ['flex-start', 'center', 'flex-end']
+        // const randomPosition = Math.floor(Math.random() * positions.length)
+
+        const movementSpeed = setInterval(() => {
+            this.movementInterval ++
+
+            if((this.movementInterval%2) === 0) {
+                // console.log(randomPosition)
+                screen.style.justifyContent = positions[ Math.floor(Math.random() * positions.length)]
+                screen.style.alignItems = positions[ Math.floor(Math.random() * positions.length)] 
+            }
+
+            if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10){
+                clearInterval(movementSpeed)
+            }
+        }, 200)
+        // while(this.sleepiness < 10 || this.boredom < 10 || this.hunger < 10) {
+            // screen.style.justifyContent = positions[randomPosition]
+            // screen.style.alignItems = positions[randomPosition]
+            // screen.setAttribute('align-items', positions[randomPosition])
+
+        // }
+        
+    }
     //Need a evolve function 
         //This should include a death look.
 }
@@ -94,6 +125,9 @@ const game = {
             // Boredom  - Will increase every 3 seconds 
     
             this.timer++
+            //Adding TamaLuffy Movement in Set Interval to change every second
+            
+            
             // Hunger - It will increase every second 
             if ((this.timer % 1) === 0) {
                 tamagotchi.hunger++
@@ -132,8 +166,11 @@ const game = {
     },
     startGame() {
         let newTamaLuffy = new Tamagotchi(nameInput.value)
+        this.tamaLuffy = newTamaLuffy 
+        console.log(this.tamaLuffy)
         document.querySelector('#tamagotchi-name').innerText = nameInput.value
-        this.setTime
+        this.setTime()
+        this.tamaLuffy.moveAround()
     }
     
 }
@@ -146,9 +183,10 @@ const game = {
     //run game
 
     nameButton.addEventListener('click', (event) => {
-        console.log(nameInput.value)
-        console.log(event.target)
-        document.querySelector('#tamagotchi-name').innerText = nameInput.value
+        // console.log(nameInput.value)
+        // console.log(event.target)
+        // document.querySelector('#tamagotchi-name').innerText = nameInput.value
+        game.startGame()
     })
 
 const startGame = () => {
@@ -158,5 +196,5 @@ const startGame = () => {
 
 
 
-game.setTime()
+// game.setTime()
 // const buttonBegin
