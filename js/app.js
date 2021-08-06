@@ -47,10 +47,6 @@ class Tamagotchi {
         this.movementInterval = 0
         this.evolutions = ['../image/normal-luffy.png', '../image/bounce-luffy.png']//Array of different sprite urls
 
-        // if (this.age > this.currentAge && this.age < 3) {
-        //     console.log(this.age)
-        //     this.evolve()
-        // }
     }
     //Need a movement function
     moveAround() {
@@ -91,33 +87,33 @@ class Tamagotchi {
 //Do them all separately 
 //Then we can work on trying to combine them together. 
 
-const decrementHunger = feedButton.addEventListener('click', (event) => {
-    game.tamaLuffy.hunger--
-    hungerDisplay.innerText = game.tamaLuffy.hunger
-})
+// const decrementHunger = feedButton.addEventListener('click', (event) => {
+//     game.tamaLuffy.hunger--
+//     hungerDisplay.innerText = game.tamaLuffy.hunger
+// })
 
-const decrementBoredom = playButton.addEventListener('click', (event) => {
-    game.tamaLuffy.boredom--
-    boredomDisplay.innerText = game.tamaLuffy.boredom
-})
+// const decrementBoredom = playButton.addEventListener('click', (event) => {
+//     game.tamaLuffy.boredom--
+//     boredomDisplay.innerText = game.tamaLuffy.boredom
+// })
 
-//Lets do sleep last since we will need to toggle this one with night. 
+// //Lets do sleep last since we will need to toggle this one with night. 
 
-//First time it is clicked, it will make it night time.
-//Second time it is clicked it goes back to day and sleep increments down 
-let sleepIncrementer = 0 
-const decrementSleep = lightsButton.addEventListener('click',(event) => {
+// //First time it is clicked, it will make it night time.
+// //Second time it is clicked it goes back to day and sleep increments down 
+// let sleepIncrementer = game.sleepIncrementer
+// const decrementSleep = lightsButton.addEventListener('click',(event) => {
     
-    if ((sleepIncrementer%2) === 0 || sleepIncrementer === 0) {
-        document.querySelector('.screen').classList.toggle('night-time')
-    }else {
-        // document.querySelector('#screen').classList.toggle('night-time')
-        game.tamaLuffy.sleepiness--
-        sleepDisplay.innerText = game.tamaLuffy.sleepiness
-    }
-    console.log(sleepIncrementer)
-    sleepIncrementer++
-} )
+//     if ((sleepIncrementer%2) === 0 || sleepIncrementer === 0) {
+//         document.querySelector('.screen').classList.toggle('night-time')
+//     }else {
+//         // document.querySelector('#screen').classList.toggle('night-time')
+//         game.tamaLuffy.sleepiness--
+//         sleepDisplay.innerText = game.tamaLuffy.sleepiness
+//     }
+//     console.log(sleepIncrementer)
+//     sleepIncrementer++
+// } )
 
 const game = {
     tamaLuffy: null,
@@ -154,9 +150,10 @@ const game = {
                 this.tamaLuffy.age++
                 ageDisplay.innerText = this.tamaLuffy.age
 
+                //Added evolution functionality here 
                 if (this.tamaLuffy.age == 1 || this.tamaLuffy.age == 2) { //If used anywhere else the if statement will be read at the beginning and only then
-                    console.log(document.querySelector('.sprite'))
-                    this.tamaLuffy.evolve()
+                    // console.log(document.querySelector('.sprite'))
+                    this.tamaLuffy.evolve() //Calls classes evolution function 
                 }
                 
             }
@@ -207,6 +204,46 @@ const game = {
         // document.querySelector('#tamagotchi-name').innerText = nameInput.value
         game.startGame()
     })
+//Create All of the decrementers for the buttons
+//Do them all separately 
+//Then we can work on trying to combine them together. 
+
+const decrementHunger = feedButton.addEventListener('click', (event) => {
+    game.tamaLuffy.hunger--
+    hungerDisplay.innerText = game.tamaLuffy.hunger
+})
+
+const decrementBoredom = playButton.addEventListener('click', (event) => {
+    game.tamaLuffy.boredom--
+    boredomDisplay.innerText = game.tamaLuffy.boredom
+})
+
+//Lets do sleep last since we will need to toggle this one with night. 
+
+//First time it is clicked, it will make it night time.
+//Second time it is clicked it goes back to day and sleep increments down 
+let sleepIncrementer = game.sleepIncrementer
+const decrementSleep = lightsButton.addEventListener('click',(event) => {
+    
+    if ((sleepIncrementer%2) === 0 || sleepIncrementer === 0) {
+        document.querySelector('.screen').classList.toggle('night-time')
+    }else {
+        // document.querySelector('#screen').classList.toggle('night-time')
+        game.tamaLuffy.sleepiness--
+        sleepDisplay.innerText = game.tamaLuffy.sleepiness
+    }
+    console.log(sleepIncrementer)
+    sleepIncrementer++
+} )
+
+
+
+
+
+
+
+
+
 
 // const startGame = () => {
    
@@ -217,3 +254,17 @@ const game = {
 
 // game.setTime()
 // const buttonBegin
+
+
+
+// Things that still need to happen 
+// Creating night scene for sleep
+// Creating the death scene/ Whatever that is going to look like
+// Toggle Formatting and improving css
+    //Buttons 
+    //Font size and 
+    //Name adjustments 
+    //Adding Jolly rogers 
+    //Look into altering background some 
+//Clean up code in here 
+//Adjust everything so it feels more seamless!
