@@ -28,13 +28,13 @@ console.log(lightsButton)
 console.log(feedButton)
 
 
-const tamagotchi = {
-    //Lets start with the buttons and getting them to work 
-    hunger: 1,
-    sleepiness: 1,
-    boredom: 1,
-    age: 0,
-}
+// const tamagotchi = {
+//     //Lets start with the buttons and getting them to work 
+//     hunger: 1,
+//     sleepiness: 1,
+//     boredom: 1,
+//     age: 0,
+// }
 //Creating class for Tamagotchi and will instantiate in game
 class Tamagotchi {
     constructor(name) {
@@ -43,7 +43,14 @@ class Tamagotchi {
         this.sleepiness = 1
         this.boredom = 1
         this.age = 0
+        this.currentAge = 0
         this.movementInterval = 0
+        this.evolutions = ['../image/normal-luffy.png', '../image/bounce-luffy.png']//Array of different sprite urls
+
+        // if (this.age > this.currentAge && this.age < 3) {
+        //     console.log(this.age)
+        //     this.evolve()
+        // }
     }
     //Need a movement function
     moveAround() {
@@ -72,6 +79,11 @@ class Tamagotchi {
         
     }
     //Need a evolve function 
+    evolve() {
+        console.log(document.querySelector('.sprite'))
+        document.querySelector('.sprite').src = this.evolutions[this.age-1]
+        
+    }
         //This should include a death look.
 }
 
@@ -80,13 +92,13 @@ class Tamagotchi {
 //Then we can work on trying to combine them together. 
 
 const decrementHunger = feedButton.addEventListener('click', (event) => {
-    tamagotchi.hunger--
-    hungerDisplay.innerText = tamagotchi.hunger
+    game.tamaLuffy.hunger--
+    hungerDisplay.innerText = game.tamaLuffy.hunger
 })
 
 const decrementBoredom = playButton.addEventListener('click', (event) => {
-    tamagotchi.boredom--
-    boredomDisplay.innerText = tamagotchi.boredom
+    game.tamaLuffy.boredom--
+    boredomDisplay.innerText = game.tamaLuffy.boredom
 })
 
 //Lets do sleep last since we will need to toggle this one with night. 
@@ -100,8 +112,8 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
         document.querySelector('.screen').classList.toggle('night-time')
     }else {
         // document.querySelector('#screen').classList.toggle('night-time')
-        tamagotchi.sleepiness--
-        sleepDisplay.innerText = tamagotchi.sleepiness
+        game.tamaLuffy.sleepiness--
+        sleepDisplay.innerText = game.tamaLuffy.sleepiness
     }
     console.log(sleepIncrementer)
     sleepIncrementer++
@@ -141,6 +153,11 @@ const game = {
             if ((this.timer % 10) === 0) {
                 this.tamaLuffy.age++
                 ageDisplay.innerText = this.tamaLuffy.age
+
+                if (this.tamaLuffy.age == 1 || this.tamaLuffy.age == 2) { //If used anywhere else the if statement will be read at the beginning and only then
+                    console.log(document.querySelector('.sprite'))
+                    this.tamaLuffy.evolve()
+                }
                 
             }
             //Clearing interval if player loses
@@ -165,9 +182,17 @@ const game = {
         document.querySelector('#tamagotchi-name').innerText = nameInput.value
         this.setTime()
         this.tamaLuffy.moveAround()
-    }
+        console.log(document.querySelector('.sprite'))
+        
+    },
+    // evolve() {
+    //     if (this.tamaLuffy.age === 1 || this.tamaLuffy.age === 2) {
+    //         this.tamaLuffy.evolve()
+    //     }
+    // }
     
 }
+
 
 //start game 
     // What needs to happen 
@@ -183,9 +208,9 @@ const game = {
         game.startGame()
     })
 
-const startGame = () => {
+// const startGame = () => {
    
-}
+// }
 
 
 
