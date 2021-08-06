@@ -54,13 +54,12 @@ class Tamagotchi {
         //Have them selected at random through a loop 
         //I could make an array with flex start, flex end, and center 
         const positions = ['flex-start', 'center', 'flex-end']
-        // const randomPosition = Math.floor(Math.random() * positions.length)
+        
 
         const movementSpeed = setInterval(() => {
             this.movementInterval ++
 
             if((this.movementInterval%2) === 0) {
-                // console.log(randomPosition)
                 screen.style.justifyContent = positions[ Math.floor(Math.random() * positions.length)]
                 screen.style.alignItems = positions[ Math.floor(Math.random() * positions.length)] 
             }
@@ -69,12 +68,7 @@ class Tamagotchi {
                 clearInterval(movementSpeed)
             }
         }, 200)
-        // while(this.sleepiness < 10 || this.boredom < 10 || this.hunger < 10) {
-            // screen.style.justifyContent = positions[randomPosition]
-            // screen.style.alignItems = positions[randomPosition]
-            // screen.setAttribute('align-items', positions[randomPosition])
-
-        // }
+        
         
     }
     //Need a evolve function 
@@ -130,27 +124,27 @@ const game = {
             
             // Hunger - It will increase every second 
             if ((this.timer % 1) === 0) {
-                tamagotchi.hunger++
-                hungerDisplay.innerText = tamagotchi.hunger
+                this.tamaLuffy.hunger++
+                hungerDisplay.innerText = this.tamaLuffy.hunger
             } 
             // Boredom  - Will increase every 3 seconds
             if ((this.timer % 3) === 0) {
-                tamagotchi.boredom++
-                boredomDisplay.innerText = tamagotchi.boredom
+                this.tamaLuffy.boredom++
+                boredomDisplay.innerText = this.tamaLuffy.boredom
             }
             // Sleep - Will increase every 4 seconds 
             if((this.timer % 4) === 0) {
-                tamagotchi.sleepiness++
-                sleepDisplay.innerText = tamagotchi.sleepiness
+                this.tamaLuffy.sleepiness++
+                sleepDisplay.innerText = this.tamaLuffy.sleepiness
             }
             // Age - Will increase every 10 seconds 
             if ((this.timer % 10) === 0) {
-                tamagotchi.age++
-                ageDisplay.innerText = tamagotchi.age
+                this.tamaLuffy.age++
+                ageDisplay.innerText = this.tamaLuffy.age
                 
             }
             //Clearing interval if player loses
-            if(tamagotchi.hunger >= 10 || tamagotchi.boredom >= 10 || tamagotchi.sleepiness >= 10) {
+            if(this.tamaLuffy.hunger >= 10 || this.tamaLuffy.boredom >= 10 || this.tamaLuffy.sleepiness >= 10) {
                 clearInterval(gameTimer)
                 // document.querySelectorAll('.buttons').disabled = true [ CAN NOT GET TO WORK RIGHT NOW]
                 // playButton.setAttribute('disabled','true')
