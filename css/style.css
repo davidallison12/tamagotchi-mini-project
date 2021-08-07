@@ -148,12 +148,7 @@ h4{
 .end-sequence-three {
     background-image: url(../image/luffy-down.png);
     background-repeat: no-repeat;
-    background-size: 38vw;
-}
-.end-sequence-four {
-    background-image: url(../image/to-be-continued.png);
-    background-repeat: no-repeat;
-    background-size: 100vh;
+    background-size: cover;
 }
 
 #tamagotchi-name {

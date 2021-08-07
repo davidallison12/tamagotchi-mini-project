@@ -28,13 +28,7 @@ console.log(lightsButton)
 console.log(feedButton)
 
 
-// const tamagotchi = {
-//     //Lets start with the buttons and getting them to work 
-//     hunger: 1,
-//     sleepiness: 1,
-//     boredom: 1,
-//     age: 0,
-// }
+
 //Creating class for Tamagotchi and will instantiate in game
 class Tamagotchi {
     constructor(name) {
@@ -80,40 +74,10 @@ class Tamagotchi {
         document.querySelector('.sprite').src = this.evolutions[this.age-1]
         
     }
-        //This should include a death look.
 }
 
-//Create All of the decrementers for the buttons
-//Do them all separately 
-//Then we can work on trying to combine them together. 
-
-// const decrementHunger = feedButton.addEventListener('click', (event) => {
-//     game.tamaLuffy.hunger--
-//     hungerDisplay.innerText = game.tamaLuffy.hunger
-// })
-
-// const decrementBoredom = playButton.addEventListener('click', (event) => {
-//     game.tamaLuffy.boredom--
-//     boredomDisplay.innerText = game.tamaLuffy.boredom
-// })
-
-// //Lets do sleep last since we will need to toggle this one with night. 
-
-// //First time it is clicked, it will make it night time.
-// //Second time it is clicked it goes back to day and sleep increments down 
-// let sleepIncrementer = game.sleepIncrementer
-// const decrementSleep = lightsButton.addEventListener('click',(event) => {
     
-//     if ((sleepIncrementer%2) === 0 || sleepIncrementer === 0) {
-//         document.querySelector('.screen').classList.toggle('night-time')
-//     }else {
-//         // document.querySelector('#screen').classList.toggle('night-time')
-//         game.tamaLuffy.sleepiness--
-//         sleepDisplay.innerText = game.tamaLuffy.sleepiness
-//     }
-//     console.log(sleepIncrementer)
-//     sleepIncrementer++
-// } )
+
 
 const game = {
     tamaLuffy: null,
@@ -164,10 +128,6 @@ const game = {
             //Clearing interval if player loses
             if(this.tamaLuffy.hunger >= 10 || this.tamaLuffy.boredom >= 10 || this.tamaLuffy.sleepiness >= 10) {
                 clearInterval(gameTimer)
-                // document.querySelectorAll('.buttons').disabled = true [ CAN NOT GET TO WORK RIGHT NOW]
-                // playButton.setAttribute('disabled','true')
-                // lightsButton.disabled = true
-                // feedButton.disabled = true
                 document.querySelector('.buttons-container').disabled = true
                 this.endGame()
     
@@ -192,12 +152,8 @@ const game = {
         document.querySelector('.sprite').style.display = 'none'
         screen.classList.replace('placeholder', 'end-sequence-one')
         const endSequence = setInterval(() => {
-            // sequenceTimer++
             
-            // if(sequenceTimer === 0) {
-            //     document.querySelector('.sprite').style.display = 'none'
-            //     screen.classList.replace('placeholder', 'end-sequence-one')
-            // }
+            
             this.sequenceTimer++
             if(this.sequenceTimer === 1) {
                 screen.classList.replace('end-sequence-one', 'end-sequence-two')
@@ -207,8 +163,6 @@ const game = {
     
             }
             if(this.sequenceTimer === 3) {
-                // screen.classList.replace('end-sequence-two', 'end-sequence-three')
-                // screen.classList.replace('end-sequence-three', 'end-sequence-four')
                 let gameOverElement = document.createElement('p')
                 gameOverElement.innerText = 'GAME OVER'
                 gameOverElement.classList.add('game-over-element')
@@ -220,10 +174,17 @@ const game = {
     
             }
 
-            if (this.sequenceTimer === 5) {
+            if (this.sequenceTimer === 4) {
                 clearInterval(endSequence)
-                // screen.classList.replace('end-sequence-three', 'end-sequence-four')
-                // console.log('GAME OVER')
+                nameInput.remove()
+                nameButton.remove()
+                const resetButton = document.createElement('button')
+                resetButton.innerText = 'RESET GAME'
+                resetButton.classList.add('buttons')
+                document.querySelector('#name-container').appendChild(resetButton)
+                resetButton.addEventListener('click', ()=> {
+                    location.reload()
+                })
             }
     
         },1500)
@@ -233,22 +194,16 @@ const game = {
 
 
 //start game 
-    // What needs to happen 
-    //Once name has been place in the prompt 
-    //  start the timer
-    // instantiate tamagotchi(AKA Luffy) with value in the input
-    //run game
 
     nameButton.addEventListener('click', (event) => {
-        // console.log(nameInput.value)
-        // console.log(event.target)
-        // document.querySelector('#tamagotchi-name').innerText = nameInput.value
         game.startGame()
     })
 //Create All of the decrementers for the buttons
 //Do them all separately 
 //Then we can work on trying to combine them together. 
 
+
+//Hunger Button - Decrementer
 const decrementHunger = feedButton.addEventListener('click', (event) => {
     game.tamaLuffy.hunger--
     if (game.tamaLuffy.hunger <= 0){
@@ -257,6 +212,7 @@ const decrementHunger = feedButton.addEventListener('click', (event) => {
     hungerDisplay.innerText = game.tamaLuffy.hunger
 })
 
+//Boredom Button - Decrementer
 const decrementBoredom = playButton.addEventListener('click', (event) => {
     game.tamaLuffy.boredom--
     if (game.tamaLuffy.boredom <= 0){
@@ -266,17 +222,19 @@ const decrementBoredom = playButton.addEventListener('click', (event) => {
    
 })
 
-//Lets do sleep last since we will need to toggle this one with night. 
 
-//First time it is clicked, it will make it night time.
-//Second time it is clicked it goes back to day and sleep increments down 
+
+
+
+//Sleep Button Decrementer
 let sleepIncrementer = game.sleepIncrementer
 const decrementSleep = lightsButton.addEventListener('click',(event) => {
-    
+    //First time it is clicked, it will make it night time.
     if ((sleepIncrementer%2) === 0 || sleepIncrementer === 0) {
         document.querySelector('.screen').classList.toggle('night-time')
-    }else {
-        // document.querySelector('#screen').classList.toggle('night-time')
+    }
+    //Second time it is clicked it goes back to day and sleep increments down 
+    else {
         game.tamaLuffy.sleepiness--
         document.querySelector('.screen').classList.toggle('night-time')
         if (game.tamaLuffy.sleepiness <= 0){
@@ -289,52 +247,6 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 } )
 
 
-
-function endGame () {
-    sequenceTimer = 0
-    document.querySelector('.sprite').style.display = 'none'
-    screen.classList.replace('placeholder', 'end-sequence-one')
-    const endSequence = setInterval(() => {
-        // sequenceTimer++
-        
-        // if(sequenceTimer === 0) {
-        //     document.querySelector('.sprite').style.display = 'none'
-        //     screen.classList.replace('placeholder', 'end-sequence-one')
-        // }
-        sequenceTimer++
-        if(sequenceTimer === 1) {
-            screen.classList.replace('end-sequence-one', 'end-sequence-two')
-        }
-        if(sequenceTimer === 2) {
-            screen.classList.replace('end-sequence-two', 'end-sequence-three')
-
-        }
-        if (sequenceTimer === 3) {
-            clearInterval(endSequence)
-            console.log('GAME OVER')
-        }
-
-    },1500)
-}
-
-//End sequence 
-//Make bacground black 
-
-// endGame()
-
-
-
-
-
-// const startGame = () => {
-   
-// }
-
-
-
-
-// game.setTime()
-// const buttonBegin
 
 
 
