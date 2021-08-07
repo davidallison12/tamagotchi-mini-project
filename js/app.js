@@ -261,7 +261,7 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 
 // Things that still need to happen 
 
-// Creating night scene for sleep
+// Creating night scene for sleep[DONE]
 // Creating the death scene/ Whatever that is going to look like
 // Toggle Formatting and improving css
     //Buttons 

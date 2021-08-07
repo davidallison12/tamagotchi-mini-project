@@ -1,5 +1,5 @@
 * {
-    border: gold solid 1px
+    /* border: gold solid 1px */
 }
 
 @font-face {
@@ -8,19 +8,35 @@
 }
 
 body {
-    background-color: #3f61b4;
+    /* background-color: #3f61b4; */
+    background-image: url(https://preview.redd.it/0em9dqfi3sq61.jpg?auto=webp&s=2a4a9dc5264aa9ce342b9cf0bf1c3bcc8b3b9444);
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* background-color: rgba(0,0,0,0.75); */
+    /* opacity: 10; */
     height: 300 px;
     font-family: onePieceFont;
 }
+
+
+
 
 header {
     text-align: center;
     font-family: onePieceFont;
     font-size: 60px;
     margin-bottom: 10px;
+    width: 40vw;
+    margin: 0 auto;
+    background-color: black;
+    border-radius: 10px;
+
 }
 h1 {
     margin: 0;
+    color: #a2173b;
+    font-weight: bolder;
+    
 }
 
 
@@ -36,10 +52,10 @@ main {
 }
 
 .screen {
-    height:50vh;
-    width: 70%;
+    height:55vh;
+    width: 75%;
     background-color: #f8f7ff;
-    margin-top: 8vh;
+    margin-top: 7vh;
     display: flex;
 }
 .sprite {
@@ -49,9 +65,10 @@ main {
 .points-container {
     display: flex;
     justify-content: space-around;
-    width: 70%;
+    width: 75%;
     text-align: center;
-    background-color: #f2d857
+    background-color: #f2d857;
+    font-size: 20px;
 }
 
 .points-window {
@@ -73,10 +90,17 @@ margin: 0
 }
 .buttons {
     background-color: #f2d857;
-    height:40px;
-    width: 13vh;
+    height:50px;
+    width: 14vh;
     text-align: center;
     font-weight: bold;
+    border-radius: 10px;
+}
+
+h4{
+    margin: auto;
+    padding:1vh;
+    font-size: 20px;
 }
 
 /* .sprite {
