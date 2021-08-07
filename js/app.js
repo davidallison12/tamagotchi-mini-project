@@ -148,20 +148,24 @@ const game = {
         
     },
     endGame() {
-        
         document.querySelector('.sprite').style.display = 'none'
+
+        //Replaces a placeholder class with the first end sequence image
         screen.classList.replace('placeholder', 'end-sequence-one')
-        const endSequence = setInterval(() => {
-            
-            
+
+        const endSequence = setInterval(() => { 
             this.sequenceTimer++
+
+            //Replaces screen image @ 1 interval 
             if(this.sequenceTimer === 1) {
                 screen.classList.replace('end-sequence-one', 'end-sequence-two')
             }
+            //Replaces screen image @ 2 interval 
             if(this.sequenceTimer === 2) {
                 screen.classList.replace('end-sequence-two', 'end-sequence-three')
     
             }
+            //Replaces screen image @ 3 interval 
             if(this.sequenceTimer === 3) {
                 let gameOverElement = document.createElement('p')
                 gameOverElement.innerText = 'GAME OVER'
@@ -173,7 +177,7 @@ const game = {
 
     
             }
-
+            //Adds replaces input div with a reset button
             if (this.sequenceTimer === 4) {
                 clearInterval(endSequence)
                 nameInput.remove()
@@ -198,6 +202,8 @@ const game = {
     nameButton.addEventListener('click', (event) => {
         game.startGame()
     })
+
+
 //Create All of the decrementers for the buttons
 //Do them all separately 
 //Then we can work on trying to combine them together. 
@@ -221,9 +227,6 @@ const decrementBoredom = playButton.addEventListener('click', (event) => {
     boredomDisplay.innerText = game.tamaLuffy.boredom
    
 })
-
-
-
 
 
 //Sleep Button Decrementer
@@ -253,12 +256,12 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 // Things that still need to happen 
 
 // Creating night scene for sleep[DONE]
-// Creating the death scene/ Whatever that is going to look like
+// Creating the death scene/ Whatever that is going to look like[DONE]
 // Toggle Formatting and improving css
-    //Buttons 
-    //Font size and 
-    //Name adjustments 
-    //Adding Jolly rogers 
-    //Look into altering background some 
-//Clean up code in here 
-//Adjust everything so it feels more seamless!
+    //Buttons [DONE]
+    //Font size and [DONE]
+    //Name adjustments [Done]
+    //Adding Jolly rogers [SCRATCHED]
+    //Look into altering background some [DONE]
+//Clean up code in here [DONE]
+//Adjust everything so it feels more seamless![DONE]
