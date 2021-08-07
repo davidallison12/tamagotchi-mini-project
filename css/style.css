@@ -90,3 +90,9 @@ margin: 0
     /* height: 50 vh; */
     /* width: 60 vw; */
 }
+
+.night-time {
+    background-image: url(../image/night-time.jpg);
+    background-repeat: no-repeat;
+    background-size: 110vh;
+}

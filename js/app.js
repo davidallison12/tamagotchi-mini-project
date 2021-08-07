@@ -230,6 +230,8 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
     }else {
         // document.querySelector('#screen').classList.toggle('night-time')
         game.tamaLuffy.sleepiness--
+        document.querySelector('.screen').classList.toggle('night-time')
+
         sleepDisplay.innerText = game.tamaLuffy.sleepiness
     }
     console.log(sleepIncrementer)
@@ -258,6 +260,7 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 
 
 // Things that still need to happen 
+
 // Creating night scene for sleep
 // Creating the death scene/ Whatever that is going to look like
 // Toggle Formatting and improving css
