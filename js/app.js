@@ -46,7 +46,7 @@ class Tamagotchi {
         this.currentAge = 0
         this.movementInterval = 0
         this.evolutions = ['../image/normal-luffy.png', '../image/bounce-luffy.png']//Array of different sprite urls
-
+        
     }
     //Need a movement function
     moveAround() {
@@ -70,7 +70,7 @@ class Tamagotchi {
             if (this.hunger >= 10 || this.sleepiness >= 10 || this.boredom >= 10){
                 clearInterval(movementSpeed)
             }
-        }, 200)
+        }, 100)
         
         
     }
@@ -147,9 +147,11 @@ const game = {
                 sleepDisplay.innerText = this.tamaLuffy.sleepiness
             }
             // Age - Will increase every 10 seconds 
-            if ((this.timer % 10) === 0) {
+            if ((this.timer % 12) === 0) {
                 this.tamaLuffy.age++
                 ageDisplay.innerText = this.tamaLuffy.age
+
+            
 
                 //Added evolution functionality here 
                 if (this.tamaLuffy.age == 1 || this.tamaLuffy.age == 2) { //If used anywhere else the if statement will be read at the beginning and only then
@@ -158,6 +160,7 @@ const game = {
                 }
                 
             }
+            
             //Clearing interval if player loses
             if(this.tamaLuffy.hunger >= 10 || this.tamaLuffy.boredom >= 10 || this.tamaLuffy.sleepiness >= 10) {
                 clearInterval(gameTimer)
@@ -172,7 +175,7 @@ const game = {
                
             }
     
-        }, 1750)
+        }, 500)
     },
     startGame() {
         let newTamaLuffy = new Tamagotchi(nameInput.value)
@@ -203,7 +206,7 @@ const game = {
                 screen.classList.replace('end-sequence-two', 'end-sequence-three')
     
             }
-            if(this.sequenceTimer === 4) {
+            if(this.sequenceTimer === 3) {
                 // screen.classList.replace('end-sequence-two', 'end-sequence-three')
                 // screen.classList.replace('end-sequence-three', 'end-sequence-four')
                 let gameOverElement = document.createElement('p')
@@ -248,12 +251,19 @@ const game = {
 
 const decrementHunger = feedButton.addEventListener('click', (event) => {
     game.tamaLuffy.hunger--
+    if (game.tamaLuffy.hunger <= 0){
+        game.tamaLuffy.hunger = 0
+    }
     hungerDisplay.innerText = game.tamaLuffy.hunger
 })
 
 const decrementBoredom = playButton.addEventListener('click', (event) => {
     game.tamaLuffy.boredom--
+    if (game.tamaLuffy.boredom <= 0){
+        game.tamaLuffy.boredom = 0
+    }
     boredomDisplay.innerText = game.tamaLuffy.boredom
+   
 })
 
 //Lets do sleep last since we will need to toggle this one with night. 
@@ -269,7 +279,9 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
         // document.querySelector('#screen').classList.toggle('night-time')
         game.tamaLuffy.sleepiness--
         document.querySelector('.screen').classList.toggle('night-time')
-
+        if (game.tamaLuffy.sleepiness <= 0){
+            game.tamaLuffy.sleepiness = 0
+        }
         sleepDisplay.innerText = game.tamaLuffy.sleepiness
     }
     console.log(sleepIncrementer)
