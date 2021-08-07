@@ -16,6 +16,7 @@ body {
     /* opacity: 10; */
     height: 300 px;
     font-family: onePieceFont;
+    /* background-color: black; */
 }
 
 
@@ -35,6 +36,7 @@ header {
 h1 {
     margin: 0;
     color: #a2173b;
+    /* color: rgb(255, 26, 34); */
     font-weight: bolder;
     
 }
@@ -55,9 +57,10 @@ main {
     height:55vh;
     width: 75%;
     background-color: #f8f7ff;
-    margin-top: 7vh;
+    /* margin-top: 1vh; */
     display: flex;
 }
+
 .sprite {
     height:150px ;
 }
@@ -86,15 +89,22 @@ margin: 0
     display: flex;
     justify-content: space-around;
     width: 70%;
-    padding:5vh 0 
+    padding:3vh 0 
 }
 .buttons {
     background-color: #f2d857;
     height:50px;
-    width: 14vh;
+    width: 17vh;
     text-align: center;
     font-weight: bold;
     border-radius: 10px;
+    font-family: onePieceFont;
+    font-size: 21px;
+
+}
+.name-button {
+    width: 28vh;
+    font-size: 21px;
 }
 
 h4{
@@ -109,14 +119,55 @@ h4{
 } */
 
 
-.game-console {
+/* .game-console {
     background-color: lightcoral;
     /* height: 50 vh; */
     /* width: 60 vw; */
-}
+/* } */
 
 .night-time {
     background-image: url(../image/night-time.jpg);
     background-repeat: no-repeat;
     background-size: 110vh;
+}
+
+.end-sequence-one {
+    background-image: url(../image/luffy-falls.jpeg) ;
+    background-repeat: no-repeat;
+    background-size: 110vh;
+    background-position: 0px;
+}
+
+.end-sequence-two {
+    background-image: url(../image/luffy-defeated.jpeg);
+    background-repeat: no-repeat;
+    background-size: 38vw;
+    /* background-position: 25px; */
+}
+
+.end-sequence-three {
+    background-image: url(../image/luffy-down.png);
+    background-repeat: no-repeat;
+    background-size: 38vw;
+}
+.end-sequence-four {
+    background-image: url(../image/to-be-continued.png);
+    background-repeat: no-repeat;
+    background-size: 100vh;
+}
+
+#tamagotchi-name {
+    font-size: 55px;
+    margin:0;
+    font-weight: 900;
+}
+
+.game-over-element {
+    color: #a2173b;
+    text-align: center;
+    font-size: 170px;
+    font-weight: bolder;
+    margin-top: 20px;
+    /* vertical-align: text-top; */
+
 }

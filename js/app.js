@@ -19,7 +19,7 @@ const sleepDisplay = document.querySelector('#sleep-points')
 const ageDisplay = document.querySelector('#age-level')
 const nameInput = document.querySelector('#name-input')
 const nameButton = document.querySelector('#name-button')
-const screen = document.querySelector('.screen')
+const screen = document.querySelector('#screen')
 // playButton.addEventListener('click',()=>{ console.log(playButton)})
 
 
@@ -119,6 +119,7 @@ const game = {
     tamaLuffy: null,
     timer: 0,
     sleepIncrementer:0,
+    sequenceTimer:0,
     setTime() {
         const gameTimer = setInterval(() => {
             // Create timer that increase time every second 
@@ -165,12 +166,13 @@ const game = {
                 // lightsButton.disabled = true
                 // feedButton.disabled = true
                 document.querySelector('.buttons-container').disabled = true
+                this.endGame()
     
                 
                
             }
     
-        }, 1000)
+        }, 1750)
     },
     startGame() {
         let newTamaLuffy = new Tamagotchi(nameInput.value)
@@ -182,11 +184,47 @@ const game = {
         console.log(document.querySelector('.sprite'))
         
     },
-    // evolve() {
-    //     if (this.tamaLuffy.age === 1 || this.tamaLuffy.age === 2) {
-    //         this.tamaLuffy.evolve()
-    //     }
-    // }
+    endGame() {
+        
+        document.querySelector('.sprite').style.display = 'none'
+        screen.classList.replace('placeholder', 'end-sequence-one')
+        const endSequence = setInterval(() => {
+            // sequenceTimer++
+            
+            // if(sequenceTimer === 0) {
+            //     document.querySelector('.sprite').style.display = 'none'
+            //     screen.classList.replace('placeholder', 'end-sequence-one')
+            // }
+            this.sequenceTimer++
+            if(this.sequenceTimer === 1) {
+                screen.classList.replace('end-sequence-one', 'end-sequence-two')
+            }
+            if(this.sequenceTimer === 2) {
+                screen.classList.replace('end-sequence-two', 'end-sequence-three')
+    
+            }
+            if(this.sequenceTimer === 4) {
+                // screen.classList.replace('end-sequence-two', 'end-sequence-three')
+                // screen.classList.replace('end-sequence-three', 'end-sequence-four')
+                let gameOverElement = document.createElement('p')
+                gameOverElement.innerText = 'GAME OVER'
+                gameOverElement.classList.add('game-over-element')
+                document.querySelector('.sprite').remove()
+                screen.appendChild(gameOverElement)
+                screen.style.display = 'inline'
+
+
+    
+            }
+
+            if (this.sequenceTimer === 5) {
+                clearInterval(endSequence)
+                // screen.classList.replace('end-sequence-three', 'end-sequence-four')
+                // console.log('GAME OVER')
+            }
+    
+        },1500)
+    }
     
 }
 
@@ -240,8 +278,37 @@ const decrementSleep = lightsButton.addEventListener('click',(event) => {
 
 
 
+function endGame () {
+    sequenceTimer = 0
+    document.querySelector('.sprite').style.display = 'none'
+    screen.classList.replace('placeholder', 'end-sequence-one')
+    const endSequence = setInterval(() => {
+        // sequenceTimer++
+        
+        // if(sequenceTimer === 0) {
+        //     document.querySelector('.sprite').style.display = 'none'
+        //     screen.classList.replace('placeholder', 'end-sequence-one')
+        // }
+        sequenceTimer++
+        if(sequenceTimer === 1) {
+            screen.classList.replace('end-sequence-one', 'end-sequence-two')
+        }
+        if(sequenceTimer === 2) {
+            screen.classList.replace('end-sequence-two', 'end-sequence-three')
 
+        }
+        if (sequenceTimer === 3) {
+            clearInterval(endSequence)
+            console.log('GAME OVER')
+        }
 
+    },1500)
+}
+
+//End sequence 
+//Make bacground black 
+
+// endGame()
 
 
 
