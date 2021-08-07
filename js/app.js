@@ -39,7 +39,7 @@ class Tamagotchi {
         this.age = 0
         this.currentAge = 0
         this.movementInterval = 0
-        this.evolutions = ['../image/normal-luffy.png', '../image/bounce-luffy.png']//Array of different sprite urls
+        this.evolutions = ['./image/normal-luffy.png', './image/bounce-luffy.png']//Array of different sprite urls
         
     }
     //Need a movement function
